@@ -15,11 +15,17 @@ This is a command-line file search application written in C. The application sea
 
 1. Download the executable "FileSearch.exe" for Windows from the [releases](https://github.com/EndrDragon44/FileSearch/releases) page.
 
-2. Move the downloaded "FileSearch.exe" to the "System32" folder (`C:\Windows\System32`).
+2. If not already installed, install VS Redist from Microsoft: (Links Below)
 
-3. Open a command prompt (Press `Win + R`, type `cmd`, and press Enter).
+      [VS Redist x86 Download](https://aka.ms/vs/17/release/vc_redist.x86.exe)
+      [VS Redist x64 Download](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+      [VS Redist Arm64 Download](https://aka.ms/vs/17/release/vc_redist.arm64.exe)
+   
+3. Move the downloaded "FileSearch.exe" to the "System32" folder (`C:\Windows\System32`).
 
-4. In the command prompt, type the following command to run the application for file search:
+4. Open a command prompt (Press `Win + R`, type `cmd`, and press Enter).
+
+5. In the command prompt, type the following command to run the application for file search:
 
    ```
    FileSearch.exe /FM "filename" [directory]
