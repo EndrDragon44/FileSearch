@@ -19,7 +19,7 @@ This is a command-line file search application written in C. The application sea
 
       [VS Redist x86 Download](https://aka.ms/vs/17/release/vc_redist.x86.exe)
       [VS Redist x64 Download](https://aka.ms/vs/17/release/vc_redist.x64.exe)
-      [VS Redist Arm64 Download](https://aka.ms/vs/17/release/vc_redist.arm64.exe)
+      **No ARM VS Redist because I never compiled for ARM anyway.**
    
 3. Move the downloaded "FileSearch.exe" to the "System32" folder (`C:\Windows\System32`).
 
