@@ -62,6 +62,11 @@ This is a command-line file search application written in C. The application sea
 
    Replace "filename" or "subdirectory" with the name of the file or subdirectory you want to search for, and optionally specify the starting directory for the search (default is the current directory).
 
+## Notes:
+
+If you get an error saying "[directory/file] was not found." that means you don't have access to it or it is a Windows compatiblility junction/symlink. (like the 'Documents and Settings' folder on the C:\ root that links to 'C:\Users' for compatibility with Windows XP applications as in XP it was called 'C:\Documents and Settings' instead of 'C:\Users')
+It does not search in these folders. Run the tool as SYSTEM user or as an ADMIN to TRY bypassing it.
+
 ## Contribution
 
 This project welcomes contributions from macOS and Linux users who can help test and build versions of the application for these platforms. If you are interested in contributing, please follow the steps mentioned in the "Contribution" section of this README.
