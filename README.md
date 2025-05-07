@@ -20,12 +20,13 @@ This is a command-line file search application written in C. The application sea
       [VS Redist x86 Download](https://aka.ms/vs/17/release/vc_redist.x86.exe)
       [VS Redist x64 Download](https://aka.ms/vs/17/release/vc_redist.x64.exe)
       **No ARM VS Redist because I never compiled for ARM anyway.**
+   If you have issues running the EXE getting errors for `ucrtbased.dll` and `vcruntime140d.dll` I added the copies of them from my compliler PC's HDD and included a VT Scan link aswell. They are in the SDM Release release notes and as packed as a ZIP.
    
-3. Move the downloaded "FileSearch.exe" to the "System32" folder (`C:\Windows\System32`).
+4. Move the downloaded "FileSearch.exe" to the "System32" folder (`C:\Windows\System32`).
 
-4. Open a command prompt (Press `Win + R`, type `cmd`, and press Enter).
+5. Open a command prompt (Press `Win + R`, type `cmd`, and press Enter).
 
-5. In the command prompt, type the following command to run the application for file search:
+6. In the command prompt, type the following command to run the application for file search:
 
    ```
    FileSearch.exe /FM "filename" [directory]
