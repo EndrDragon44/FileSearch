@@ -476,7 +476,7 @@ impl SearchEngine {
         }
       
         writeln!(file, "FileSearch Results")?;
-        writeln!("System: {} {}",arch, os)
+        writeln!(file, "System: {} {}",arch, os)?;
         writeln!(file, "Generated: {:?}", SystemTime::now())?;
         writeln!(file, "Query: {}", self.config.query)?;
         writeln!(file, "Search directory: {}", self.config.start_dir.display())?;
