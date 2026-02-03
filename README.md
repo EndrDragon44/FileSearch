@@ -2,6 +2,24 @@
 
 This is a command-line file search application written in C. The application searches for a specified filename or subdirectory in a directory and all its subdirectories and provides a list of matching files or subdirectories.
 
+### OS Support
+#### Windows
+- [x] 64 bit
+- [ ] 32 bit
+- [ ] ARM64
+
+#### Linux
+- [x] 64 bit
+- [ ] 32 bit
+- [ ] ARM64
+
+#### macOS
+- [x] 64 bit
+- [x] ARM64 (M-series)
+
+More support will need contributors, see the section below!
+
+
 ## Features
 
 - Search for a specific file or subdirectory in a directory and its subdirectories.
@@ -13,41 +31,40 @@ This is a command-line file search application written in C. The application sea
 
 ### Windows:
 
-1. Download the executable "FileSearch.exe" for Windows from the [releases](https://github.com/EndrDragon44/FileSearch/releases) page.
+1. Download the version you want for Windows from the [releases](https://github.com/EndrDragon44/FileSearch/releases) page.
 
-2. If not already installed, install VS Redist from Microsoft: (Links Below)
+2. Extract `filesearch.exe` to your downloads folder, or wherever you prefer.
 
-      [VS Redist x86 Download](https://aka.ms/vs/17/release/vc_redist.x86.exe)
-      [VS Redist x64 Download](https://aka.ms/vs/17/release/vc_redist.x64.exe)
-      **No ARM VS Redist because I never compiled for ARM anyway.**
-   If you have issues running the EXE getting errors for `ucrtbased.dll` and `vcruntime140d.dll` I added the copies of them from my compliler PC's HDD and included a VT Scan link aswell. They are in the SDM Release release notes and as packed as a ZIP.
-   
-4. Move the downloaded "FileSearch.exe" to the "System32" folder (`C:\Windows\System32`).
+3. Move `filesearch.exe` from where you extracted it to the "System32" folder (`C:\Windows\System32`). This will need administrator priviledges to do.
 
-5. Open a command prompt (Press `Win + R`, type `cmd`, and press Enter).
+4. Open a command prompt (Press `Win + R`, type `cmd`, and press Enter).
 
-6. In the command prompt, type the following command to run the application for file search:
+5. In the command prompt, type the following command to run the application for file search:
 
    ```
-   FileSearch.exe /FM "filename" [directory]
+   filesearch.exe /FM "filename" [directory]
    ```
 
-   Or for subdirectory search:
+   To start a subdirectory search:
 
    ```
-   FileSearch.exe /SDM "subdirectory" [directory]
+   filesearch.exe /SDM "subdirectory" [directory]
+   ```
+
+   Or to find both:
+
+   ```
+   filesearch.exe /BOTH "query" [directory]
    ```
 
    Replace "filename" or "subdirectory" with the name of the file or subdirectory you want to search for, and optionally specify the starting directory for the search (default is the current directory).
-   Oh, and if for whatever reason you are using this in WSL (Windows Subsystem for Linux, basically Linux in Windows, but by Microsoft), it'll still work. Follow the steps for Linux and it works the same! (That's how I tested and compiled the Linux release...)
+### Linux:
 
-### Linux and macOS:
+1. Download the version you want for Linux from the [releases](https://github.com/EndrDragon44/FileSearch/releases) page.
 
-1. Download the executable "file_search" for Linux and macOS from the [releases](https://github.com/EndrDragon44/FileSearch/releases) page.
+2. Extract the zip folder and extract the `filesearch` binary to your Downloads folder or wherever you prefer.
 
-2. Open a terminal.
-
-3. Navigate to the directory containing the downloaded "filesearch" executable.
+3. Open a terminal and navigate to the folder you extracted to. run `chmod a+rx ./filesearch` to allow every user permissions to read and execute, then run `sudo mv ./filesearch /bin` and authenticate to globally install filesearch. 
 
 4. In the terminal, type the following command to run the application for file search:
 
@@ -55,22 +72,58 @@ This is a command-line file search application written in C. The application sea
    ./filesearch /FM "filename" [directory]
    ```
 
-   Or for subdirectory search:
+   To start a subdirectory search:
 
    ```
    ./filesearch /SDM "subdirectory" [directory]
+   ```
+   
+   Or to find both:
+
+   ```
+   filesearch /BOTH "query" [directory]
+   ```
+
+   Replace "filename" or "subdirectory" with the name of the file or subdirectory you want to search for, and optionally specify the starting directory for the search (default is the current directory).
+### Linux:
+
+1. Download the version you want for macOS from the [releases](https://github.com/EndrDragon44/FileSearch/releases) page.
+
+2. Extract the zip folder and extract the `filesearch` binary to your Downloads folder or wherever you prefer.
+
+3. Open a terminal and navigate to the folder you extracted to. run `chmod a+rx ./filesearch` to allow every user permissions to read and execute, then run `sudo mv ./filesearch /bin` and authenticate to globally install filesearch. 
+
+4. In the terminal, type the following command to run the application for file search:
+
+   ```
+   ./filesearch /FM "filename" [directory]
+   ```
+
+   To start a subdirectory search:
+
+   ```
+   ./filesearch /SDM "subdirectory" [directory]
+   ```
+   
+   Or to find both:
+
+   ```
+   filesearch /BOTH "query" [directory]
    ```
 
    Replace "filename" or "subdirectory" with the name of the file or subdirectory you want to search for, and optionally specify the starting directory for the search (default is the current directory).
 
 ## Notes:
-
-If you get an error saying "[directory/file] was not found." that means you don't have access to it or it is a Windows compatiblility junction/symlink. (like the 'Documents and Settings' folder on the C:\ root that links to 'C:\Users' for compatibility with Windows XP applications as in XP it was called 'C:\Documents and Settings' instead of 'C:\Users')
-It does not search in these folders. Run the tool as SYSTEM user or as an ADMIN to TRY bypassing it.
+### Errors
+Errors that appear from threads that state it has insufficent permissions, or that the directory it tried to access was invalid, indicate that you do not have access to that directory. To try fixing this, you can run the command using administrative rights by running it in an elevated command prompt in Windows, or by running it using `sudo` on Linux and macOS like so: `sudo filesearch [mode] "query" [directory]`
+### Limits
+When on Windows and use WSL to run the Linux version, running a search in `/` or `/mnt/` may produce many permission errors, regardless of how you run it. This is caused by how WSL mounts Windows drive letters (C:\, D:\, etc) to the container, and how NTFS permssions for system files and directories are enforced to WSL even when read with superuser. The only way to avoid the log clutter from Windows drives is either to unmount the drives with `sudo umount /mnt/[ltr] -f` and try again, or just use the Windows version to access Windows filesystems.
 
 ## Contribution
 
 This project welcomes contributions from macOS and Linux users who can help test and build versions of the application for these platforms. If you are interested in contributing, please follow the steps mentioned in the "Contribution" section of this README.
+
+We do have a contributer for ARM (M-Series) builds for macOS!
 
 ## Attribution
 
@@ -82,6 +135,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-If you have any questions or need further assistance, feel free to contact the project maintainers or open an issue in the GitHub repository.
+If you have any questions or need further assistance, feel free to open an issue in the repository.
 
 We appreciate your support in making this application accessible and functional on multiple platforms! Your contributions will be acknowledged and will help improve the project for all users. Happy searching!
