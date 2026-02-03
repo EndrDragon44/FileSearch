@@ -1,6 +1,6 @@
 # File Search Application
 
-This is a command-line file search application written in C. The application searches for a specified filename or subdirectory in a directory and all its subdirectories and provides a list of matching files or subdirectories.
+This is a command-line file search application originally written in C, now written with Rust. The application searches for a specified filename or subdirectory in a directory and all its subdirectories and provides a list of matching files or subdirectories. It supports threading, logfiles, wildcards, case-sensitivity, and more.
 
 ### OS Support
 #### Windows
