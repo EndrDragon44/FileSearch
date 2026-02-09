@@ -5,17 +5,17 @@ This is a command-line file search application originally written in C, now writ
 ### OS Support
 #### Windows
 - [x] 64 bit
-- [ ] 32 bit
-- [ ] ARM64
+- [x] 32 bit
+- [x] ARM64
 
 #### Linux
 - [x] 64 bit
-- [ ] 32 bit
-- [ ] ARM64
+- [x] 32 bit
+- [x] ARM64
 
 #### macOS
 - [x] 64 bit
-- [x] ARM64 (M-series)
+- [ ] ARM64 (M-series)
 
 More support will need contributors, see the section below!
 
